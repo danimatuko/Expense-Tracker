@@ -9,17 +9,17 @@ include 'templates/header.php';
 ?>
 
 
-<form method="GET" action="/add"> 
+<form method="POST" action="add.php">
     <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <input type="text" class="form-control" id="description" aria-describedby="description">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" name="title" aria-describedby="title">
     </div>
     <div class="mb-3">
         <label for="amount" class="form-label">Amount</label>
-        <input type="text" class="form-control" id="amount" aria-describedby="amount">
+        <input type="text" class="form-control" name="amount" aria-describedby="amount">
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>
 
 
