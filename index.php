@@ -1,5 +1,5 @@
 <?php include 'templates/header.php'; ?>
-
+<?php include_once 'database/create.php' ?>
 
 
 <?php if (!empty($_SESSION['errors'])) {
