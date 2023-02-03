@@ -13,7 +13,6 @@ if ($conn->connect_error) {
 }
 
 // Create database
-
 if (!$conn->select_db($dbname)) {
     $sql = "CREATE DATABASE $dbname";
     if ($conn->query($sql) === TRUE) {
@@ -46,4 +45,4 @@ if (!$conn->query($sql) === TRUE) {
 } 
 
 
-$conn->close();
+// $conn->close();

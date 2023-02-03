@@ -18,6 +18,7 @@ if (isset($_POST['submit'])) {
 
     header("location:index.php");
 }
+// INSERT INTO `expenses` (`id`, `title`, `amount`, `create_at`) VALUES ('1', 'Gas', '800', current_timestamp());
 ?>
 
 
