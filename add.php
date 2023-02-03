@@ -1,4 +1,5 @@
 <?php include 'templates/header.php'; ?>
+<?php include 'database/db_connect.php'; ?>
 
 <?php
 $errors = array("title" => null, "amount" => null);
@@ -16,9 +17,15 @@ if (isset($_POST['submit'])) {
 
     $_SESSION['errors'] = $errors;
 
-    header("location:index.php");
+    if ($errors) {
+        $sql = "INSERT INTO expenses (title, amount) VALUES ('$_POST[title]' ,'$_POST[amount]')";
+        if (!mysqli_query($conn, $sql)) {
+            die('query error ' . mysqli_error($conn));
+        }
+        header("location:index.php");
+    }
 }
-// INSERT INTO `expenses` (`id`, `title`, `amount`, `create_at`) VALUES ('1', 'Gas', '800', current_timestamp());
+// INSERT INTO `expenses` ( `title`, `amount`, `create_at`) VALUES (''Gas', '800', current_timestamp());
 ?>
 
 

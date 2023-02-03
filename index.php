@@ -37,7 +37,7 @@ $expenses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 <div class="expenses my-5">
     <?php foreach ($expenses as $exspense) : ?>
-        <div class="shadow p-3 mb-5 bg-body-tertiary d-flex justify-content-between  border-end border-5 border-success">
+        <div class="shadow p-3 mb-2 bg-body-tertiary d-flex justify-content-between  border-end border-5 border-success">
             <span><?php echo $exspense['title']; ?></span>
             <span><?php echo  "$" .  $exspense['amount']; ?></span>
         </div>
