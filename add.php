@@ -20,12 +20,11 @@ if (isset($_POST['submit'])) {
     if ($errors) {
         $sql = "INSERT INTO expenses (title, amount) VALUES ('$_POST[title]' ,'$_POST[amount]')";
         if (!mysqli_query($conn, $sql)) {
-            die('query error ' . mysqli_error($conn));
+            echo('query error ' . mysqli_error($conn));
         }
         header("location:index.php");
     }
 }
-// INSERT INTO `expenses` ( `title`, `amount`, `create_at`) VALUES (''Gas', '800', current_timestamp());
 ?>
 
 

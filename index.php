@@ -1,9 +1,8 @@
-<?php include 'templates/header.php'; ?>
 <?php include_once 'database/create.php' ?>
+<?php include 'templates/header.php'; ?>
 
 
 <?php if (!empty($_SESSION['errors'])) {
-    //display the message however you want
     $errors =   $_SESSION['errors'];
 }
 ?>
@@ -45,6 +44,4 @@ $expenses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 </div>
 
 </div>
-</body>
-
-</html>
+<?php include  "templates/footer.php" ?>
