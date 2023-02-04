@@ -24,5 +24,5 @@
             </a>
         </div>
     </nav>
-    <div class="container w-25">
+    <div class="container w-75">
         <h1 class="my-5 text-center">Expense Tracker</h1>
