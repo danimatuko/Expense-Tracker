@@ -23,6 +23,13 @@ if (!$conn->select_db($dbname)) {
 }
 
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 
 
 // sql to create table
@@ -30,6 +37,7 @@ $sql = "CREATE TABLE IF NOT EXISTS $tablename  (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     amount INT(30) NOT NULL,
+    is_positive BOOLEAN NOT NULL,
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
 

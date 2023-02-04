@@ -13,14 +13,16 @@ if (isset($_POST['submit'])) {
     if (empty($_POST['amount'])) {
         echo "Amount is required";
         $errors['amount'] = "Amount is required, please try again";
+    } else {
+        $is_positive =  $_POST['amount'][0] === '-' ? 0 : 1;
     }
 
     $_SESSION['errors'] = $errors;
 
     if ($errors) {
-        $sql = "INSERT INTO expenses (title, amount) VALUES ('$_POST[title]' ,'$_POST[amount]')";
+        $sql = "INSERT INTO expenses (title, amount,is_positive) VALUES ('$_POST[title]' ,'$_POST[amount]','$is_positive')";
         if (!mysqli_query($conn, $sql)) {
-            echo('query error ' . mysqli_error($conn));
+            die('query error ' . mysqli_error($conn));
         }
         header("location:index.php");
     }

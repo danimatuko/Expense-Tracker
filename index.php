@@ -20,7 +20,7 @@ $expenses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <div class="row justify-content-around">
     <!-- Expenses-Form -->
     <div class="col-3">
-        <h2 class="my-4  h4">Add new expense</h2>
+        <h2 class="mt-4  h4">Add new expense</h2>
         <hr>
         <form method="POST" action="add.php" novalidate class="needs-validation">
             <div class="mb-3">
@@ -44,7 +44,7 @@ $expenses = mysqli_fetch_all($result, MYSQLI_ASSOC);
     </div>
     <!-- Expenses-List -->
     <div class="col-4">
-        <h2 class="my-4 h4">History</h2>
+        <h2 class="my-4 h4 text-center">History</h2>
         <div class="expenses my-4">
             <?php foreach ($expenses as $exspense) : ?>
                 <!-- Single-Expense -->
@@ -55,11 +55,11 @@ $expenses = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             <i class="bi bi-trash fs-4"></i>
                         </button>
                     </form>
-                    <div class="col shadow p-3 mb-2 bg-body-tertiary d-flex justify-content-between  border-end border-5 <?php echo $exspense['amount'][0] === '-' ? 'border-danger' : 'border-success';  ?>">
+                    <div class="col shadow p-3 mb-2 bg-body-tertiary d-flex justify-content-between  border-end border-5 <?php echo $exspense['is_positive'] ? 'border-success' : 'border-danger';  ?>">
                         <span><?php echo $exspense['title']; ?></span>
                         <span>
                             <?php
-                            echo $exspense['amount'][0] === '-' ? '-$' : '$';
+                            echo $exspense['is_positive']? '$' : '-$';
                             echo trim($exspense['amount'], '-');
                             ?>
                         </span>
