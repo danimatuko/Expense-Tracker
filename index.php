@@ -46,8 +46,14 @@ $expenses = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <h2 class="my-4 h4">History</h2>
         <div class="expenses my-4">
             <?php foreach ($expenses as $exspense) : ?>
+                <!-- Single-Expense -->
                 <div class="row align-items-center">
-                    <i class="bi bi-trash col-1 fs-4 me-2"></i>
+                    <form method="GET" action="delete.php" class="col-1 me-4 ">
+                        <input type="hidden" name="id" value="<?php echo $exspense['id']; ?>">
+                        <button type="submit" name='delete' style="background: initial;border: initial;">
+                            <i class="bi bi-trash fs-4"></i>
+                        </button>
+                    </form>
                     <div class="col shadow p-3 mb-2 bg-body-tertiary d-flex justify-content-between  border-end border-5 border-success">
                         <span><?php echo $exspense['title']; ?></span>
                         <span><?php echo  "$" .  $exspense['amount']; ?></span>
