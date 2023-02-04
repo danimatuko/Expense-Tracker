@@ -36,6 +36,7 @@ $expenses = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <div class="invalid-feedback">
                     <?php echo $errors['amount']; ?>
                 </div>
+                <div class="form-text">Positive for income. Negative for expense</div>
             </div>
 
             <button type="submit" name="submit" class="btn btn-dark w-100">Submit</button>
@@ -54,9 +55,15 @@ $expenses = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             <i class="bi bi-trash fs-4"></i>
                         </button>
                     </form>
-                    <div class="col shadow p-3 mb-2 bg-body-tertiary d-flex justify-content-between  border-end border-5 border-success">
+                    <div class="col shadow p-3 mb-2 bg-body-tertiary d-flex justify-content-between  border-end border-5 <?php echo $exspense['amount'][0] === '-' ? 'border-danger' : 'border-success';  ?>">
                         <span><?php echo $exspense['title']; ?></span>
-                        <span><?php echo  "$" .  $exspense['amount']; ?></span>
+                        <span>
+                            <?php
+                            echo $exspense['amount'][0] === '-' ? '-$' : '$';
+                            echo trim($exspense['amount'], '-');
+                            ?>
+                        </span>
+
                     </div>
                 </div>
             <?php endforeach; ?>
