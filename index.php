@@ -4,6 +4,7 @@
 
 <?php if (!empty($_SESSION['errors'])) {
     $errors =   $_SESSION['errors'];
+    unset($_SESSION['errors']);
 }
 ?>
 
@@ -34,7 +35,7 @@ $sql = 'SELECT SUM(amount) FROM `expenses` WHERE is_positive=FALSE';
 $result = mysqli_query($conn, $sql);
 
 if (!$result) {
-    echo('query error ' . mysqli_error($conn));
+    echo ('query error ' . mysqli_error($conn));
 } else {
     $row = mysqli_fetch_row($result);
     $total_expense = $row[0];
