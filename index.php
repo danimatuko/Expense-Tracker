@@ -16,7 +16,44 @@ $expenses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 
+<?php
+$sql = 'SELECT SUM(amount) FROM `expenses` WHERE is_positive=TRUE';
+$result = mysqli_query($conn, $sql);
 
+if (!$result) {
+    die('query error ' . mysqli_error($conn));
+} else {
+    $row = mysqli_fetch_row($result);
+    $total_income = $row[0];
+}
+?>
+
+
+<?php
+$sql = 'SELECT SUM(amount) FROM `expenses` WHERE is_positive=FALSE';
+$result = mysqli_query($conn, $sql);
+
+if (!$result) {
+    die('query error ' . mysqli_error($conn));
+} else {
+    $row = mysqli_fetch_row($result);
+    $total_expense = $row[0];
+}
+?>
+
+
+<div class="w-25 m-auto d-flex justify-content-around align-items-center  shadow px-2 py-4 mb-4 bg-body-tertiary">
+    <div class="text-center fw-semibold">
+        <div>INCOME</div>
+        <div class="text-success"><?php echo $total_income ?></div>
+    </div>
+    <div class="text-secondary">|</div>
+    <div class="text-center fw-semibold">
+        <div>EXPENSE</div>
+        <div class="text-danger"><?php echo $total_expense ?></div>
+    </div>
+
+</div>
 <div class="row justify-content-around">
     <!-- Expenses-Form -->
     <div class="col-3">
@@ -59,7 +96,7 @@ $expenses = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <span><?php echo $exspense['title']; ?></span>
                         <span>
                             <?php
-                            echo $exspense['is_positive']? '$' : '-$';
+                            echo $exspense['is_positive'] ? '+$' : '-$';
                             echo trim($exspense['amount'], '-');
                             ?>
                         </span>
