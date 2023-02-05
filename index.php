@@ -34,7 +34,7 @@ $sql = 'SELECT SUM(amount) FROM `expenses` WHERE is_positive=FALSE';
 $result = mysqli_query($conn, $sql);
 
 if (!$result) {
-    die('query error ' . mysqli_error($conn));
+    echo('query error ' . mysqli_error($conn));
 } else {
     $row = mysqli_fetch_row($result);
     $total_expense = $row[0];
@@ -45,7 +45,7 @@ if (!$result) {
 <?php $total =  $total_income + $total_expense; ?>
 
 <!-- Total-Summary -->
-<div class="w-25 m-auto  px-2 py-4 mb-4">
+<div class="w-25 m-auto my-4">
     <h2 class="h6 fw-semibold">TOTAL BALANCE</h2>
     <div class="h2 <?php echo $total > 0 ? 'text-success' : 'text-danger'; ?>">
         <?php
@@ -56,7 +56,7 @@ if (!$result) {
     </div>
 </div>
 
-<div class="w-25 m-auto d-flex justify-content-around align-items-center  shadow px-2 py-4 mb-4 bg-body-tertiary">
+<div class="w-25 mx-auto d-flex justify-content-around align-items-center  shadow px-2 py-4 mb-4 bg-body-tertiary">
     <div class="text-center fw-semibold">
         <div>INCOME</div>
         <div class="text-success"><?php echo $total_income | 0 ?></div>

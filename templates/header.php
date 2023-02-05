@@ -16,10 +16,10 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#" style="color:palevioletred;">
                 <i class="bi bi-piggy-bank h1"></i>
             </a>
         </div>
     </nav>
     <div class="container w-75">
-        <h1 class="my-5 text-center">Expense Tracker</h1>
+        <h1 class="my-4 text-center text-muted display-6 fw-bold">Expense Tracker</h1>
