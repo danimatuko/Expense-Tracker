@@ -42,23 +42,36 @@ if (!$result) {
 ?>
 
 
+<?php $total =  $total_income + $total_expense; ?>
+
+<!-- Total-Summary -->
+<div class="w-25 m-auto  px-2 py-4 mb-4">
+    <h2 class="h6 fw-semibold">TOTAL BALANCE</h2>
+    <div class="h2 <?php echo $total > 0 ? 'text-success' : 'text-danger'; ?>">
+        <?php
+        echo $total > 0 ? '+$' : '-$';
+        $total  =   trim($total, '-');
+        echo $total;
+        ?>
+    </div>
+</div>
+
 <div class="w-25 m-auto d-flex justify-content-around align-items-center  shadow px-2 py-4 mb-4 bg-body-tertiary">
     <div class="text-center fw-semibold">
         <div>INCOME</div>
-        <div class="text-success"><?php echo $total_income ?></div>
+        <div class="text-success"><?php echo $total_income | 0 ?></div>
     </div>
     <div class="text-secondary">|</div>
     <div class="text-center fw-semibold">
         <div>EXPENSE</div>
-        <div class="text-danger"><?php echo $total_expense ?></div>
+        <div class="text-danger"><?php echo $total_expense | 0 ?></div>
     </div>
 
 </div>
 <div class="row justify-content-around">
     <!-- Expenses-Form -->
     <div class="col-3">
-        <h2 class="mt-4  h4">Add new expense</h2>
-        <hr>
+        <h2 class="my-4  h4">Add new expense</h2>
         <form method="POST" action="add.php" novalidate class="needs-validation">
             <div class="mb-3">
                 <label for="title" class="form-label text-pink">Title</label>
